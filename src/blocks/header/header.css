@@ -1,0 +1,23 @@
+.header {
+  display: grid;
+  grid: 33px 41px / auto-flow 100%;
+  margin: 0 auto 36.25px;
+  padding: 45px 0 0;
+  max-width: 880px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 960px) {
+  .header {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .header {
+    margin: 0 0 38.25px;
+    padding-top: 28px;
+    grid-template-rows: 24.4px 31.6px;
+  }
+}
