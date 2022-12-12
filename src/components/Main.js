@@ -1,6 +1,7 @@
 import { useRef, useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Card from "./Card";
+import Header from "./Header";
 
 function Main({
   onEditAvatar,
@@ -10,12 +11,17 @@ function Main({
   onCardLike,
   onCardDelete,
   cards,
+  loggedIn,
+  userLoginData,
+  logOut
 }) {
 
   const currentUser = useContext(CurrentUserContext);
   const avatarRef = useRef();
 
   return (
+    <>
+    {/* <Header link="/sign-in" loggedIn={loggedIn} login={userLoginData} onClick={logOut} headerText="Выйти"/> */}
     <div className="content">
       <section className="profile">
         <div className="profile__description">
@@ -60,6 +66,7 @@ function Main({
         ))}
       </section>
     </div>
+    </>
   );
 }
 

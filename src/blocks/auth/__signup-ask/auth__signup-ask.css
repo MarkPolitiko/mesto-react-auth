@@ -1,0 +1,19 @@
+.auth__signup-ask {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #ffffff;
+  line-height: 1.17;
+  white-space: nowrap;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.auth__signup-ask:hover {
+    opacity: 0.6;
+  }

@@ -1,8 +1,8 @@
 .header {
-  display: grid;
-  grid: 33px 41px / auto-flow 100%;
-  margin: 0 auto 36.25px;
-  padding: 45px 0 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 45px 0;
   max-width: 880px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
@@ -16,8 +16,7 @@
 
 @media screen and (max-width: 660px) {
   .header {
-    margin: 0 0 38.25px;
-    padding-top: 28px;
-    grid-template-rows: 24.4px 31.6px;
+    margin: 0 auto;
+    padding: 28px 0;
   }
 }
