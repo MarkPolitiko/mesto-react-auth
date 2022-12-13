@@ -10,7 +10,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/Api";
 import * as auth from "../utils/Auth";
 
-import { Route, Switch, withRouter, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import InfoTooltip from "./InfoTooltip";
@@ -27,7 +27,7 @@ function App() {
 
   const [isRegistered, setIsRegistered] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isInfoOpened, setIsInfoOpened] = useState(false);
+  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = useState(false);
   const [email, setEmail] = useState("");
   const history = useHistory();
 
@@ -150,6 +150,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard({});
+    setIsInfoTooltipOpened(false);
   }
 
   function handleRegister(data) {
@@ -157,15 +158,16 @@ function App() {
       .register(data)
       .then(() => {
         setIsRegistered(true);
-        setIsInfoOpened(true);
+        setIsInfoTooltipOpened(true);
         history.push("/sign-in");
       })
       .catch((err) => {
         if (err.status === 400) {
           console.log("400 - некорректно заполнено одно из полей");
         }
+        console.error(err);
         setIsRegistered(false);
-        setIsInfoOpened(true);
+        setIsInfoTooltipOpened(true);
       });
   }
 
@@ -173,7 +175,7 @@ function App() {
     auth
       .login(data)
       .then((res) => {
-        if (res.jwt) {
+        if (res.token) {
           setLoggedIn(true);
           setEmail(data.email);
           localStorage.setItem("jwt", res.token); 
@@ -186,6 +188,9 @@ function App() {
         } else if (err.status === 401) {
           console.log("401 - пользователь с email не найден");
         }
+        console.error(err);
+        setIsRegistered(false);
+        setIsInfoTooltipOpened(true);
       });
   }
 
@@ -199,7 +204,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
         <div className="page">
-          <Header email={email} onLogOut={handleLogOut} />
+          <Header userEmail={email} onLogOut={handleLogOut} />
           <Switch>
             <ProtectedRoute
               exact
@@ -240,7 +245,7 @@ function App() {
             onAddPlace={handleAddPlaceSubmit}
           />
           <InfoTooltip
-            isOpen={isInfoOpened}
+            isOpen={isInfoTooltipOpened}
             onClose={closeAllPopups}
             isSuccessReg={isRegistered}
           />

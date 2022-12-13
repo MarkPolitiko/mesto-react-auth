@@ -1,6 +1,6 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+const BASE_URL = "https://auth.nomoreparties.co";
 
-const checkRes = (res) => {
+function checkRes(res) {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
@@ -13,8 +13,7 @@ export const register = ({email, password}) => {
     },
     body: JSON.stringify({ email: email, password: password }),
   })
-    .then((res) => checkRes(res))
-    .catch((err) => console.log(err));
+    .then(checkRes)
 };
 
 export const login = ({email, password}) => {
@@ -26,19 +25,17 @@ export const login = ({email, password}) => {
     },
     body: JSON.stringify({ email: email, password: password }),
   })
-    .then((res) => checkRes(res))
-    .catch((err) => console.log(err));
+    .then(checkRes)
 };
 
 export const checkToken = (jwt) => {
   return fetch(`${BASE_URL}/users/me`, {
-    method: "POST",
+    method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt}`,
     },
   })
-    .then((res) => checkRes(res))
-    .catch((err) => console.log(err));
+    .then(checkRes)
 };

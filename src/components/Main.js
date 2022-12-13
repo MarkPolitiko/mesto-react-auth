@@ -21,7 +21,6 @@ function Main({
 
   return (
     <>
-    {/* <Header link="/sign-in" loggedIn={loggedIn} login={userLoginData} onClick={logOut} headerText="Выйти"/> */}
     <div className="content">
       <section className="profile">
         <div className="profile__description">
