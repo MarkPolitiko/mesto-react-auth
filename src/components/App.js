@@ -28,9 +28,7 @@ function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isInfoOpened, setIsInfoOpened] = useState(false);
-  //const [userData, setUserData] = useState("");
   const [email, setEmail] = useState("");
-  /* const [isAuth, setIsAuth] = useState(false); */
   const history = useHistory();
 
   useEffect(() => {
@@ -39,7 +37,7 @@ function App() {
       auth
         .checkToken(jwt)
         .then((res) => {
-          setEmail(res.data.email); // ВОТ ЗДЕСЬ НУЖЕН ДАБЛЧЕК
+          setEmail(res.data.email);
           setLoggedIn(true);
           history.push("/");
         })
@@ -177,7 +175,7 @@ function App() {
       .then((res) => {
         if (res.jwt) {
           setLoggedIn(true);
-          setEmail(data.res.email);
+          setEmail(data.email);
           localStorage.setItem("jwt", res.token); 
           history.push("/");
         }
@@ -193,7 +191,6 @@ function App() {
 
   function handleLogOut() {
     setLoggedIn(false);
-    //setIsRegistered(false);
     localStorage.removeItem("jwt");
     history.push("/sign-in");
   }
@@ -217,7 +214,6 @@ function App() {
               onCardDelete={handleCardDelete}
               cards={cards}
               logOut={handleLogOut}
-              //userData={userData}
             ></ProtectedRoute>
             <Route path="/sign-up">
               <Register onRegister={handleRegister} />
@@ -254,4 +250,4 @@ function App() {
   );
 }
 
-export default /* withRouter( */ App;
+export default App;
