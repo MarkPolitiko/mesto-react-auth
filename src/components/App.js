@@ -10,7 +10,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/Api";
 import * as auth from "../utils/Auth";
 
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import InfoTooltip from "./InfoTooltip";
@@ -59,11 +59,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    api
-      .getInitialCards()
-      .then((res) => setCards(res))
-      .catch((err) => console.error(err));
-  }, []);
+    if (loggedIn) {
+      api
+        .getInitialCards()
+        .then((res) => setCards(res))
+        .catch((err) => console.error(err));
+    }
+  }, [loggedIn]);
 
   function handleAddPlaceSubmit(name, link) {
     api
@@ -168,6 +170,7 @@ function App() {
         console.error(err);
         setIsRegistered(false);
         setIsInfoTooltipOpened(true);
+        console.log(setIsInfoTooltipOpened(true))
       });
   }
 
@@ -178,7 +181,7 @@ function App() {
         if (res.token) {
           setLoggedIn(true);
           setEmail(data.email);
-          localStorage.setItem("jwt", res.token); 
+          localStorage.setItem("jwt", res.token);
           history.push("/");
         }
       })
@@ -220,6 +223,9 @@ function App() {
               cards={cards}
               logOut={handleLogOut}
             ></ProtectedRoute>
+            <Route exact path="/">
+              {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
+            </Route>
             <Route path="/sign-up">
               <Register onRegister={handleRegister} />
             </Route>

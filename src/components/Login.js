@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Login(/* { onLogin } */props) {
-  //const [authData, setAuthData] = useState[{ email: "", password: "" }];
+function Login(props) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +15,6 @@ function Login(/* { onLogin } */props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    //onLogin({ email, password });
     if (!email || !password) {
       return;
     }
@@ -48,9 +46,8 @@ function Login(/* { onLogin } */props) {
             minLength="2"
             maxLength="200"
             title="Длина поля должна быть 2 и более символов и менее или равно 200"
-            required
+            required 
           />
-          <span className="popup__input-error place-input-error popup__input-error_field_name"></span>
           <input
             value={password}
             className="auth__data"
@@ -61,9 +58,8 @@ function Login(/* { onLogin } */props) {
             minLength="2"
             maxLength="30"
             title="Длина поля должна быть 2 и более символов и менее или равно 30"
-            required
+            required 
           />
-          <span className="popup__input-error place-input-error popup__input-error_field_name"></span>
           <button className="auth__button">Войти</button>
           <Link to="/sign-up" className="auth__signup-ask">
             Нет учетной записи? Зарегистрироваться

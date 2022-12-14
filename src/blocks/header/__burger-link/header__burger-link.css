@@ -1,20 +1,21 @@
-.header__link {
+.header__burger-link {
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   text-align: right;
-  color: #A9A9A9;
+  color: #a9a9a9;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.header__link:hover {
+.header__burger-link:hover {
     opacity: 0.6;
     transition: 0.3s;
 }
 
 @media screen and (max-width: 660px) {
-  .header__link {
-    margin-right: 30px;
+  .header__burger-link {
+    margin-bottom: 40px;
   }
 }

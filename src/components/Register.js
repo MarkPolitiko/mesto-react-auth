@@ -40,7 +40,6 @@ function Register({ onRegister }) {
             title="Длина поля должна быть 2 и более символов и менее или равно 200"
             required
           />
-          <span className="popup__input-error place-input-error popup__input-error_field_name"></span> {/* ПОПРАВИТЬ КЛАССЫ */}
           <input
             value={password}
             className="auth__data"
@@ -53,7 +52,6 @@ function Register({ onRegister }) {
             title="Длина поля должна быть 2 и более символов и менее или равно 30"
             required
           />
-          <span className="popup__input-error place-input-error popup__input-error_field_name"></span> {/* ПОПРАВИТЬ КЛАССЫ */}
           <button className="auth__button">Зарегистрироваться</button>
           <Link to="/sign-in" className="auth__signup-ask">Уже зарегистрированы? Войти</Link>
         </form>

@@ -1,0 +1,7 @@
+@media screen and (max-width: 660px) {
+  .header_burger-menu {
+    padding-top: 28px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

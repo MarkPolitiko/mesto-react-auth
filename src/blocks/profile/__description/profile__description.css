@@ -17,3 +17,10 @@
     flex-direction: column;
   }
 }
+
+/* @media screen and (max-width: 290px) {
+  .profile__description {
+    min-width: 200px;
+    flex-direction: column;
+  }
+} */

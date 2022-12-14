@@ -1,7 +1,6 @@
 import { useRef, useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Card from "./Card";
-import Header from "./Header";
 
 function Main({
   onEditAvatar,
@@ -11,9 +10,6 @@ function Main({
   onCardLike,
   onCardDelete,
   cards,
-  loggedIn,
-  userLoginData,
-  logOut
 }) {
 
   const currentUser = useContext(CurrentUserContext);

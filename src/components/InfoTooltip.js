@@ -11,7 +11,28 @@ function InfoTooltip({ isOpen, onClose, isSuccessReg }) {
         aria-label="Закрыть"
         onClick={onClose}
       ></button>
-      {isSuccessReg ? (
+      <img
+        src={isSuccessReg ? successImg : rejectImg}
+        alt={
+          isSuccessReg
+            ? "Вы успешно зарегистрировались!"
+            : "Что-то пошло не так. Попробуйте еще раз!"
+        }
+        className="popup__tooltip_image"
+      />
+      <p className="popup__tooltip_info">
+        {isSuccessReg
+          ? "Вы успешно зарегистрировались!"
+          : "Что-то пошло не так. Попробуйте еще раз!"}
+      </p>
+    </div>
+  </div>;
+}
+
+export default InfoTooltip;
+
+{
+  /* {isSuccessReg ? (
         <>
           <img
             src={`${successImg}`}
@@ -31,9 +52,5 @@ function InfoTooltip({ isOpen, onClose, isSuccessReg }) {
             Что-то пошло не так. Попробуйте еще раз!
           </p>
         </>
-      )}
-    </div>
-  </div>;
+      )} */
 }
-
-export default InfoTooltip;
