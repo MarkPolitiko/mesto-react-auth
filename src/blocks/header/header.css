@@ -17,10 +17,11 @@
 
 @media screen and (max-width: 660px) {
   .header {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 25px;
     margin: 0 auto;
-    padding: 0 0 28px ;
-    justify-content: unset;
-    flex-direction: column-reverse;
+    padding: 28px 0 30px;
   }
 }
 
