@@ -10,11 +10,6 @@ function Register({ onRegister }) {
     onRegister({email, password});
   }
 
-  /* function handleOnChange(evt) {
-    const { name, value } = evt.target;
-    setRegData({ ...regData, [name]: value });
-  } */
-
   function handleEmail(evt) {
     setEmail(evt.target.value)
   }

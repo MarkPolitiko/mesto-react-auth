@@ -26,11 +26,6 @@ function Login(props) {
     setPassword("");
   }
 
-  /* function handleOnChange(evt) {
-    const { name, value } = evt.target;
-    setAuthData({ ...authData, [name]: value });
-  } */
-
   return (
     <>
       <div className="auth">
@@ -61,9 +56,9 @@ function Login(props) {
             required 
           />
           <button className="auth__button">Войти</button>
-          <Link to="/sign-up" className="auth__signup-ask">
+{          <Link to="/sign-up" className="auth__signup-ask">
             Нет учетной записи? Зарегистрироваться
-          </Link>
+          </Link>}
         </form>
       </div>
     </>

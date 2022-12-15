@@ -52,18 +52,13 @@ function App() {
   }, [history]);
 
   useEffect(() => {
-    api
-      .getProfileInfo()
-      .then((res) => setCurrentUser(res))
-      .catch((err) => console.error(err));
-  }, []);
-
-  useEffect(() => {
     if (loggedIn) {
-      api
-        .getInitialCards()
-        .then((res) => setCards(res))
-        .catch((err) => console.error(err));
+      Promise.all([api.getProfileInfo(), api.getInitialCards()])
+        .then(([userData, cards]) => {
+          setCurrentUser(userData);
+          setCards(cards);
+        })
+        .catch((err) => console.log(err));
     }
   }, [loggedIn]);
 
@@ -170,7 +165,6 @@ function App() {
         console.error(err);
         setIsRegistered(false);
         setIsInfoTooltipOpened(true);
-        console.log(setIsInfoTooltipOpened(true))
       });
   }
 

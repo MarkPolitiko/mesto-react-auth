@@ -7,9 +7,6 @@
   color: #ffffff;
   line-height: 1.17;
   white-space: nowrap;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: normal;
   margin-top: 15px;
   text-decoration: none;
 }
@@ -17,3 +14,9 @@
 .auth__signup-ask:hover {
     opacity: 0.6;
   }
+
+@media screen and (max-width: 350px) {
+  .auth__signup-ask {
+    display: none;
+  }
+}

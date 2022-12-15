@@ -1,8 +1,0 @@
-.burger-button__line {
-    display: block;
-    width: 24px;
-    height: 3px;
-    margin: 0 auto 6px;
-    background-color: #fff;
-    transition: all 0.3s;
-}

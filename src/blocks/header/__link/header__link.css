@@ -3,19 +3,25 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  text-align: right;
-  color: #A9A9A9;
+  color: #a9a9a9;
   text-decoration: none;
 }
 
 .header__link:hover {
-    opacity: 0.6;
-    transition: 0.3s;
+  opacity: 0.6;
+  transition: 0.3s;
 }
 
 @media screen and (max-width: 660px) {
   .header__link {
     margin-right: 30px;
-    max-width: 150px;
+    left: 300px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header__link {
+    font-size: 14px;
+    line-height: 17px;
   }
 }
